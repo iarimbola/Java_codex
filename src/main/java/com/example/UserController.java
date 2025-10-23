@@ -4,6 +4,8 @@ import com.example.repository.UserRepository;
 import io.micronaut.http.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import java.util.List;
+
 
 @Controller("/users")
 @Tag(name = "User")
@@ -16,7 +18,7 @@ public class UserController  {
     }
 
     @Get("/")
-    public Iterable<User> listUsers() {
+    public List<User> listUsers() {
         return userRepository.findAll();
     }
 
