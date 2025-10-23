@@ -76,7 +76,8 @@
       <groupId>org.apache.derby</groupId>
       <artifactId>derby</artifactId>
       <version>10.17.1.0</version>
-      <scope>compile</scope>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/derby-10-17-1-0.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>io.micronaut.validation</groupId>
