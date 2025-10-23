@@ -1,9 +1,12 @@
 package com.example;
 
 import com.example.repository.UserRepository;
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -23,8 +26,12 @@ public class UserController  {
     }
 
     @Post("/")
-    public User createUser(@Body User user) {
-        return userRepository.save(user);
+    public HttpResponse<User> createUser(@Body @Valid User user) {
+        User savedUser = userRepository.save(user);
+        URI location = URI.create("/users/" + savedUser.getId());
+        return HttpResponse
+                .created(savedUser)
+                .headers(headers -> headers.location(location));
     }
 
 
