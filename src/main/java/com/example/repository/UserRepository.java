@@ -7,7 +7,8 @@ import io.micronaut.data.repository.CrudRepository;
 
 
 @Repository
-public interface UserRepository {
+public interface UserRepository extends CrudRepository<User, Long> {
     
 }
+
 
